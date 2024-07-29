@@ -27,7 +27,40 @@ namespace Generics1
                 end--;
             }
         }
+        static int FindFirstNonRepeatedCharacterIndex(string s)
+        {
+            if (string.IsNullOrEmpty(s))
+            {
+                return -1;
+            }
 
+            // Step 1: Use a dictionary to store the count of each character
+            Dictionary<char, int> characterCount = new Dictionary<char, int>();
+
+            foreach (char c in s)
+            {
+                if (characterCount.ContainsKey(c))
+                {
+                    characterCount[c]++;
+                }
+                else
+                {
+                    characterCount[c] = 1;
+                }
+            }
+
+            // Step 2: Find the first character with a count of 1
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (characterCount[s[i]] == 1)
+                {
+                    return i;
+                }
+            }
+
+            // Step 3: If no such character exists, return -1
+            return -1;
+        }
         static void Main(string[] args)
         {
             #region Q1
@@ -69,6 +102,28 @@ namespace Generics1
             //{
             //    Console.WriteLine(num);
             //}
+            #endregion
+            #region Q3
+            //FixedSize<int> fixedSize = new FixedSize<int>(5);
+            //fixedSize.Add(3);
+            //fixedSize.Add(2);
+            //fixedSize.Add(1);
+            //fixedSize.Add(5);
+            //fixedSize.Add(4);
+            //for (int i = 0; i < fixedSize.Count; i++)
+            //{
+            //    Console.WriteLine(fixedSize.Get(i));
+            //}
+
+
+
+            #endregion
+            #region Q4
+            //string s="siss"
+            //int index = FindFirstNonRepeatedCharacterIndex(s);
+            //Console.WriteLine("The index of the first non-repeated character is: " + index);
+
+
             #endregion
         }
     }
